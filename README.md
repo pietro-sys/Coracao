@@ -62,8 +62,8 @@ no navegador.
 Você pode alterar o nome e a senha diretamente no JavaScript:
 
 ```js
-const ALLOWED_NAME = 'emily';
-const SECRET_PASS = '1234';
+const ALLOWED_NAME = '';
+const SECRET_PASS = '';
 ```
 
 Também é possível:
@@ -87,18 +87,4 @@ Esse projeto foi criado como uma forma de:
 
 ---
 
-## 💡 Próximas ideias
 
-* Carta interativa
-* Céu estrelado animado
-* Quiz personalizado
-* Linha do tempo do casal
-* Mini jogo
-* Efeitos 3D
-* Música de fundo
-
----
-
-## ❤️ Observação
-
-Esse projeto foi feito com carinho para alguém especial.

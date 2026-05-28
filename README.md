@@ -1,4 +1,4 @@
-# 💕 Para Emily
+# 💕 Coração
 
 Um pequeno projeto feito com HTML, CSS e JavaScript para criar uma experiência especial e personalizada.
 

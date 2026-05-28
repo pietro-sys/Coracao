@@ -1,377 +1,844 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Emily 💕</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  body {
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    font-family: 'Lato', sans-serif;
-    overflow: hidden;
-  }
+  <title>Para alguém especial ❤️</title>
 
-  /* ── AUTH SCREEN ── */
-  #auth {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    transition: opacity 0.8s ease;
-  }
-  #auth.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 
-  .auth-card {
-    background: #0d0d0d;
-    border: 1px solid #2a1520;
-    border-radius: 20px;
-    padding: 48px 40px 40px;
-    width: min(360px, 90vw);
-    text-align: center;
-  }
+  <style>
 
-  .auth-heart {
-    font-size: 40px;
-    margin-bottom: 16px;
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-  }
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-  .auth-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    color: #fff;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-  }
-  .auth-sub {
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 32px;
-    font-weight: 300;
-    letter-spacing: 0.5px;
-  }
+    body{
+      background:#000;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      font-family:'Lato',sans-serif;
+    }
 
-  .input-wrap {
-    position: relative;
-    margin-bottom: 14px;
-  }
-  .input-wrap input {
-    width: 100%;
-    background: #111;
-    border: 1px solid #2a2a2a;
-    border-radius: 12px;
-    padding: 14px 16px;
-    font-size: 15px;
-    color: #fff;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: 0.5px;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  .input-wrap input:focus { border-color: #ff4d8a55; }
-  .input-wrap input.error { border-color: #ff4d4d88; animation: shake 0.4s; }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25% { transform: translateX(-8px); }
-    75% { transform: translateX(8px); }
-  }
-  .input-wrap input::placeholder { color: #333; }
+    /* LOGIN */
 
-  #enter-btn {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #c2185b, #ff4d8a);
-    border: none;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 15px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: opacity 0.2s, transform 0.15s;
-    margin-top: 8px;
-  }
-  #enter-btn:hover { opacity: 0.9; }
-  #enter-btn:active { transform: scale(0.98); }
+    #auth{
+      position:fixed;
+      inset:0;
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:100;
+      transition:opacity .8s ease;
+    }
 
-  #error-msg {
-    margin-top: 14px;
-    font-size: 13px;
-    color: #ff5555;
-    min-height: 18px;
-    letter-spacing: 0.3px;
-  }
+    #auth.hide{
+      opacity:0;
+      pointer-events:none;
+    }
 
-  /* ── MAIN SCREEN ── */
-  #main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .auth-card{
+      width:min(360px,90vw);
+      background:#0d0d0d;
+      border:1px solid #3b0000;
+      border-radius:22px;
+      padding:45px 35px;
+      text-align:center;
+    }
 
-  canvas { display: block; }
+    .auth-heart{
+      font-size:40px;
+      margin-bottom:14px;
+      animation:pulseIcon 1.8s infinite;
+    }
 
-  #btn {
-    margin-top: 16px;
-    padding: 10px 28px;
-    background: transparent;
-    border: 1px solid #ff4d8a66;
-    color: #ff4d8a;
-    border-radius: 30px;
-    font-size: 13px;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  #btn:hover { background: #ff4d8a15; }
-</style>
+    @keyframes pulseIcon{
+      0%,100%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.12);
+      }
+    }
+
+    .auth-title{
+      color:#fff;
+      font-size:28px;
+      margin-bottom:8px;
+      font-family:'Playfair Display',serif;
+    }
+
+    .auth-sub{
+      color:#666;
+      font-size:13px;
+      margin-bottom:28px;
+    }
+
+    .input-wrap{
+      margin-bottom:14px;
+    }
+
+    .input-wrap input{
+      width:100%;
+      padding:14px;
+      border:none;
+      outline:none;
+      border-radius:12px;
+      background:#111;
+      border:1px solid #2a2a2a;
+      color:#fff;
+      transition:.3s;
+    }
+
+    .input-wrap input:focus{
+      border-color:#ff000088;
+    }
+
+    .input-wrap input.error{
+      border-color:#ff0000;
+      animation:shake .4s;
+    }
+
+    @keyframes shake{
+      0%,100%{
+        transform:translateX(0);
+      }
+      25%{
+        transform:translateX(-6px);
+      }
+      75%{
+        transform:translateX(6px);
+      }
+    }
+
+    #enter-btn{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      background:linear-gradient(
+        135deg,
+        #990000,
+        #ff0000
+      );
+      color:#fff;
+      transition:.2s;
+    }
+
+    #enter-btn:hover{
+      opacity:.92;
+    }
+
+    #error-msg{
+      margin-top:14px;
+      color:#ff5555;
+      min-height:18px;
+      font-size:13px;
+    }
+
+    /* MAIN */
+
+    #main{
+      display:none;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    canvas{
+      display:block;
+    }
+
+    #btn{
+      margin-top:16px;
+      padding:10px 28px;
+      border-radius:30px;
+      border:1px solid #ff000066;
+      background:transparent;
+      color:#ff4444;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    #btn:hover{
+      background:#ff000015;
+    }
+
+  </style>
 </head>
+
 <body>
 
-<!-- AUTH -->
+<!-- LOGIN -->
+
 <div id="auth">
+
   <div class="auth-card">
-    <div class="auth-heart">💗</div>
-    <h1 class="auth-title">Lugar especial</h1>
-    <p class="auth-sub">Só uma pessoa pode entrar aqui</p>
+
+    <div class="auth-heart">❤️</div>
+
+    <h1 class="auth-title">
+      Lugar especial
+    </h1>
+
+    <p class="auth-sub">
+      Só uma pessoa pode entrar aqui
+    </p>
 
     <div class="input-wrap">
-      <input id="name-input" type="text" placeholder="Qual é o seu nome?" autocomplete="off" />
-    </div>
-    <div class="input-wrap">
-      <input id="pass-input" type="password" placeholder="Senha secreta" autocomplete="off" />
+      <input
+        id="name-input"
+        type="text"
+        placeholder="Qual é o seu nome?"
+      >
     </div>
 
-    <button id="enter-btn">Entrar →</button>
+    <div class="input-wrap">
+      <input
+        id="pass-input"
+        type="password"
+        placeholder="Senha secreta"
+      >
+    </div>
+
+    <button id="enter-btn">
+      Entrar →
+    </button>
+
     <p id="error-msg"></p>
+
   </div>
+
 </div>
 
 <!-- MAIN -->
+
 <div id="main">
+
   <canvas id="c"></canvas>
-  <button id="btn">🚀 Lançar novamente</button>
+
+  <button id="btn">
+    ❤️ Reiniciar
+  </button>
+
 </div>
 
 <script>
-// ── CREDENCIAIS ──────────────────────────────────────────
-const ALLOWED_NAME = 'Nome da amada';      // nome aceito (case-insensitive)
-const SECRET_PASS  = 'Algo importante para ambos';       // senha — troque aqui!
-// ────────────────────────────────────────────────────────
 
-const authEl     = document.getElementById('auth');
-const nameInput  = document.getElementById('name-input');
-const passInput  = document.getElementById('pass-input');
-const enterBtn   = document.getElementById('enter-btn');
-const errorMsg   = document.getElementById('error-msg');
+/* LOGIN */
 
-function tryEnter() {
-  const name = nameInput.value.trim().toLowerCase();
-  const pass = passInput.value.trim();
+const ALLOWED_NAME = 'emily';
+const SECRET_PASS = 'fedida';
 
-  if (name !== ALLOWED_NAME) {
-    shake(nameInput);
-    errorMsg.textContent = 'Hmm… esse nome não está na lista 💔';
-    return;
-  }
-  if (pass !== SECRET_PASS) {
-    shake(passInput);
-    errorMsg.textContent = 'Senha incorreta, tente novamente 🔐';
-    return;
-  }
+const authEl =
+  document.getElementById('auth');
 
-  // SUCCESS
-  errorMsg.textContent = '';
-  authEl.classList.add('hide');
-  setTimeout(() => { authEl.style.display = 'none'; startAnimation(); }, 900);
-}
+const mainEl =
+  document.getElementById('main');
 
-function shake(el) {
+const nameInput =
+  document.getElementById('name-input');
+
+const passInput =
+  document.getElementById('pass-input');
+
+const enterBtn =
+  document.getElementById('enter-btn');
+
+const errorMsg =
+  document.getElementById('error-msg');
+
+function shake(el){
+
   el.classList.remove('error');
+
   void el.offsetWidth;
+
   el.classList.add('error');
-  setTimeout(() => el.classList.remove('error'), 500);
+
+  setTimeout(()=>{
+    el.classList.remove('error');
+  },400);
 }
 
-enterBtn.addEventListener('click', tryEnter);
-[nameInput, passInput].forEach(el => el.addEventListener('keydown', e => { if (e.key === 'Enter') tryEnter(); }));
+function tryEnter(){
 
+  const name =
+    nameInput.value
+    .trim()
+    .toLowerCase();
 
-// ── ANIMATION ───────────────────────────────────────────
-function startAnimation() {
-  const canvas = document.getElementById('c');
-  const ctx = canvas.getContext('2d');
+  const pass =
+    passInput.value.trim();
 
-  const W = Math.min(window.innerWidth, 560);
-  const H = Math.min(window.innerHeight - 80, 560);
+  if(name !== ALLOWED_NAME){
+
+    shake(nameInput);
+
+    errorMsg.textContent =
+      'Esse nome não está na lista ❤️';
+
+    return;
+  }
+
+  if(pass !== SECRET_PASS){
+
+    shake(passInput);
+
+    errorMsg.textContent =
+      'Senha incorreta 🔐';
+
+    return;
+  }
+
+  errorMsg.textContent = '';
+
+  authEl.classList.add('hide');
+
+  setTimeout(()=>{
+
+    authEl.style.display = 'none';
+
+    mainEl.style.display = 'flex';
+
+    startAnimation();
+
+  },800);
+}
+
+enterBtn.addEventListener(
+  'click',
+  tryEnter
+);
+
+[nameInput,passInput].forEach(el=>{
+
+  el.addEventListener('keydown',e=>{
+
+    if(e.key === 'Enter'){
+      tryEnter();
+    }
+
+  });
+
+});
+
+/* ANIMAÇÃO */
+
+function startAnimation(){
+
+  const canvas =
+    document.getElementById('c');
+
+  const ctx =
+    canvas.getContext('2d');
+
+  const W =
+    Math.min(window.innerWidth,560);
+
+  const H =
+    Math.min(window.innerHeight - 80,560);
+
   canvas.width = W;
   canvas.height = H;
 
-  function heartX(t) { return 16 * Math.pow(Math.sin(t), 3); }
-  function heartY(t) { return -(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t)); }
+  const CX = W / 2;
+  const CY = H / 2 + 20;
+
+  function heartX(t){
+    return 16 * Math.pow(Math.sin(t),3);
+  }
+
+  function heartY(t){
+    return -(
+      13 * Math.cos(t)
+      - 5 * Math.cos(2*t)
+      - 2 * Math.cos(3*t)
+      - Math.cos(4*t)
+    );
+  }
 
   const SCALE = W / 58;
-  const CX = W / 2;
-  const CY = H / 2 + H * 0.06;
 
-  function getHeartPoints(n) {
+  function getHeartPoints(n,scale=1){
+
     const pts = [];
-    for (let i = 0; i < n; i++) {
-      const t = (i / n) * Math.PI * 2;
-      pts.push({ x: CX + heartX(t) * SCALE, y: CY + heartY(t) * SCALE });
+
+    for(let i=0;i<n;i++){
+
+      const t =
+        (i/n) * Math.PI * 2;
+
+      pts.push({
+
+        x:
+          CX +
+          heartX(t)
+          * SCALE
+          * scale,
+
+        y:
+          CY +
+          heartY(t)
+          * SCALE
+          * scale
+
+      });
+
     }
+
     return pts;
   }
 
-  const NUM_PARTICLES = 520;
-  const heartPts = getHeartPoints(NUM_PARTICLES);
+  const heartPts =
+    getHeartPoints(520);
 
-  function shuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+  /* CORAÇÕES PULSANDO */
+
+  class PulseHeart{
+
+    constructor(){
+
+      this.scale = 1;
+      this.alpha = 1;
     }
-    return arr;
+
+    update(){
+
+      this.scale += 0.02;
+
+      this.alpha -= 0.012;
+    }
+
+    draw(){
+
+      const pts =
+        getHeartPoints(
+          520,
+          this.scale
+        );
+
+      ctx.beginPath();
+
+      pts.forEach((p,i)=>{
+
+        if(i === 0){
+
+          ctx.moveTo(
+            p.x,
+            p.y
+          );
+
+        } else {
+
+          ctx.lineTo(
+            p.x,
+            p.y
+          );
+        }
+      });
+
+      ctx.closePath();
+
+      ctx.strokeStyle =
+        `rgba(255,0,0,${this.alpha})`;
+
+      ctx.lineWidth = 2;
+
+      ctx.shadowColor = '#ff0000';
+
+      ctx.shadowBlur = 18;
+
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
+    }
   }
+
+  /* ROCKET */
 
   class Rocket {
-    constructor(target, delay) {
+
+    constructor(target, delay){
+
       this.target = target;
       this.delay = delay;
-      this.arrived = false;
-      this.sx = CX + (Math.random() - 0.5) * W * 0.35;
-      this.sy = H + 10;
-      this.x = this.sx; this.y = this.sy;
-      this.trail = []; this.maxTrail = 18;
+
+      this.sx =
+        CX +
+        (Math.random() - 0.5)
+        * W * 0.35;
+
+      this.sy = H + 20;
+
+      this.x = this.sx;
+      this.y = this.sy;
+
       this.progress = 0;
-      this.totalFrames = 45 + Math.random() * 15;
-      const hue = 315 + Math.random() * 55;
-      const light = 60 + Math.random() * 25;
-      this.color = `hsl(${hue},90%,${light}%)`;
-      this.glowColor = `hsl(${hue},100%,82%)`;
-      this.sparks = [];
+
+      this.arrived = false;
+
+      this.totalFrames =
+        45 + Math.random() * 18;
+
+      this.trail = [];
+
+      this.maxTrail = 18;
     }
 
-    update(fc) {
-      if (fc < this.delay) return;
-      if (this.arrived) {
-        this.sparks = this.sparks.filter(s => s.life > 0);
-        this.sparks.forEach(s => { s.x += s.vx; s.y += s.vy; s.vy += 0.08; s.life -= 3; s.vx *= 0.96; });
-        return;
-      }
+    update(frame){
+
+      if(frame < this.delay) return;
+
+      if(this.arrived) return;
+
       this.progress++;
-      const t = Math.min(this.progress / this.totalFrames, 1);
-      const ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
-      this.trail.push({ x: this.x, y: this.y });
-      if (this.trail.length > this.maxTrail) this.trail.shift();
-      this.x = this.sx + (this.target.x - this.sx) * ease;
-      this.y = this.sy + (this.target.y - this.sy) * ease;
-      if (t >= 1) { this.arrived = true; this.x = this.target.x; this.y = this.target.y; this.spawnSparks(); }
-    }
 
-    spawnSparks() {
-      for (let i = 0; i < 10 + Math.random()*8; i++) {
-        const a = Math.random() * Math.PI * 2, sp = 0.5 + Math.random() * 2.5;
-        this.sparks.push({ x: this.x, y: this.y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp-1, life: 60+Math.random()*40 });
+      const t = Math.min(
+        this.progress /
+        this.totalFrames,
+        1
+      );
+
+      const ease =
+        t < 0.5
+        ? 2 * t * t
+        : -1 + (4 - 2 * t) * t;
+
+      this.trail.push({
+        x:this.x,
+        y:this.y
+      });
+
+      if(this.trail.length >
+        this.maxTrail){
+
+        this.trail.shift();
+      }
+
+      this.x =
+        this.sx +
+        (this.target.x - this.sx)
+        * ease;
+
+      this.y =
+        this.sy +
+        (this.target.y - this.sy)
+        * ease;
+
+      if(t >= 1){
+        this.arrived = true;
       }
     }
 
-    draw() {
-      if (!this.arrived) {
-        for (let i = 0; i < this.trail.length; i++) {
-          ctx.beginPath();
-          ctx.arc(this.trail[i].x, this.trail[i].y, (i/this.trail.length)*2.5, 0, Math.PI*2);
-          ctx.fillStyle = this.color; ctx.globalAlpha = (i/this.trail.length)*0.7; ctx.fill();
-        }
-        ctx.beginPath(); ctx.arc(this.x, this.y, 3, 0, Math.PI*2);
-        ctx.fillStyle = '#fff'; ctx.globalAlpha = 1; ctx.fill();
-        ctx.beginPath(); ctx.arc(this.x, this.y, 5, 0, Math.PI*2);
-        ctx.fillStyle = this.glowColor; ctx.globalAlpha = 0.5; ctx.fill();
-      } else {
-        ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI*2);
-        ctx.fillStyle = this.color; ctx.globalAlpha = 0.9; ctx.fill();
-        this.sparks.forEach(s => {
-          ctx.beginPath(); ctx.arc(s.x, s.y, 1, 0, Math.PI*2);
-          ctx.fillStyle = this.glowColor; ctx.globalAlpha = s.life/100; ctx.fill();
-        });
+    draw(){
+
+      // RASTRO
+
+      for(let i=0;
+        i<this.trail.length;
+        i++){
+
+        const p =
+          this.trail[i];
+
+        const alpha =
+          i / this.trail.length;
+
+        ctx.beginPath();
+
+        ctx.arc(
+          p.x,
+          p.y,
+          alpha * 3,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle =
+          '#ff2222';
+
+        ctx.globalAlpha =
+          alpha * 0.55;
+
+        ctx.fill();
       }
+
+      // GLOW
+
+      ctx.beginPath();
+
+      ctx.arc(
+        this.x,
+        this.y,
+        7,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle =
+        '#ff6666';
+
+      ctx.globalAlpha = 0.15;
+
+      ctx.fill();
+
+      // NÚCLEO
+
+      ctx.beginPath();
+
+      ctx.arc(
+        this.x,
+        this.y,
+        2.5,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle = '#fff';
+
       ctx.globalAlpha = 1;
+
+      ctx.fill();
     }
   }
 
-  // Name fade-in state
+  let rockets = [];
+  let pulseHearts = [];
+
+  let frame = 0;
+
   let nameAlpha = 0;
-  let nameVisible = false;
 
-  let rockets = [], frameCount = 0, animId;
+  let lastPulse = 0;
 
-  function init() {
-    cancelAnimationFrame(animId);
-    frameCount = 0; rockets = []; nameAlpha = 0; nameVisible = false;
-    const shuffled = shuffle([...heartPts]);
-    shuffled.forEach((pt, i) => rockets.push(new Rocket(pt, Math.floor(i * 0.8))));
+  function init(){
+
+    rockets = [];
+    pulseHearts = [];
+
+    frame = 0;
+
+    nameAlpha = 0;
+
+    heartPts.forEach((pt,i)=>{
+
+      rockets.push(
+        new Rocket(pt,i*0.8)
+      );
+
+    });
+
     loop();
   }
 
-  function drawName(alpha) {
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
+  function allArrived(){
 
-    // glow layers
-    const glowSize = W * 0.115;
-    ctx.font = `italic ${glowSize}px 'Playfair Display', serif`;
-    ctx.fillStyle = '#ff80aa';
-    ctx.shadowColor = '#ff4d8a';
-    ctx.shadowBlur = 28;
-    ctx.fillText('Emily', CX, CY - 4);
-    ctx.shadowBlur = 0;
+    return rockets.every(
+      r => r.arrived
+    );
+  }
+
+  function drawName(){
+
+    ctx.save();
+
+    ctx.globalAlpha =
+      nameAlpha;
+
+    ctx.textAlign = 'center';
+
+    ctx.font =
+      `italic ${W*0.11}px Playfair Display`;
+
+    ctx.fillStyle = '#ff4d4d';
+
+    ctx.shadowColor = '#ff0000';
+
+    ctx.shadowBlur = 30;
+
+    ctx.fillText(
+      'Emily',
+      CX,
+      CY
+    );
+
     ctx.restore();
   }
 
-  function allArrived() {
-    return rockets.length > 0 && rockets.every(r => r.arrived);
-  }
+  function loop(){
 
-  function loop() {
-    ctx.fillStyle = 'rgba(0,0,0,0.18)';
-    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle =
+      'rgba(0,0,0,0.10)';
 
-    rockets.forEach(r => { r.update(frameCount); r.draw(); });
+    ctx.fillRect(
+      0,
+      0,
+      W,
+      H
+    );
 
-    if (allArrived()) {
-      nameAlpha = Math.min(nameAlpha + 0.015, 1);
+    rockets.forEach(r=>{
+
+      r.update(frame);
+
+      if(!r.arrived){
+        r.draw();
+      }
+
+    });
+
+    /* LINHA SENDO FORMADA */
+
+    ctx.beginPath();
+
+    let first = true;
+
+    rockets.forEach(r=>{
+
+      if(r.arrived){
+
+        if(first){
+
+          ctx.moveTo(
+            r.target.x,
+            r.target.y
+          );
+
+          first = false;
+
+        } else {
+
+          ctx.lineTo(
+            r.target.x,
+            r.target.y
+          );
+        }
+      }
+    });
+
+    ctx.shadowColor = '#ff0000';
+
+    ctx.shadowBlur = 22;
+
+    ctx.strokeStyle = '#ff1a1a';
+
+    ctx.lineWidth = 2.3;
+
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+
+    /* FINAL */
+
+    if(allArrived()){
+
+      const pulse =
+        1 +
+        Math.sin(frame * 0.05)
+        * 0.035;
+
+      // cria novos corações pulsando
+      if(frame - lastPulse > 28){
+
+        lastPulse = frame;
+
+        pulseHearts.push(
+          new PulseHeart()
+        );
+      }
+
+      // coração principal
+
+      ctx.beginPath();
+
+      heartPts.forEach((p,i)=>{
+
+        const px =
+          CX +
+          (p.x - CX)
+          * pulse;
+
+        const py =
+          CY +
+          (p.y - CY)
+          * pulse;
+
+        if(i === 0){
+
+          ctx.moveTo(px,py);
+
+        } else {
+
+          ctx.lineTo(px,py);
+        }
+      });
+
+      ctx.closePath();
+
+      ctx.shadowColor = '#ff0000';
+
+      ctx.shadowBlur = 28;
+
+      ctx.strokeStyle = '#ff1a1a';
+
+      ctx.lineWidth = 2.5;
+
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
+
+      // desenha ondas de coração
+
+      pulseHearts.forEach(h=>{
+
+        h.update();
+        h.draw();
+
+      });
+
+      pulseHearts =
+        pulseHearts.filter(
+          h => h.alpha > 0
+        );
+
+      // nome
+
+      nameAlpha =
+        Math.min(
+          nameAlpha + 0.02,
+          1
+        );
+
+      drawName();
     }
-    if (nameAlpha > 0) drawName(nameAlpha);
 
-    frameCount++;
-    animId = requestAnimationFrame(loop);
+    frame++;
+
+    requestAnimationFrame(loop);
   }
 
-  document.getElementById('btn').addEventListener('click', init);
+  document
+    .getElementById('btn')
+    .addEventListener(
+      'click',
+      init
+    );
+
   init();
 }
+
 </script>
+
 </body>
 </html>
+```
